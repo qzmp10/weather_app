@@ -1,6 +1,10 @@
-import { getLocation, getWeather } from "./asyncFunctions";
+import { getWeather } from "./asyncFunctions";
+import { searchButton } from "./dom";
 
-getLocation()
-getWeather();
+searchButton.addEventListener('click', () => {
+    getWeather();
+})
+
+
 
 
