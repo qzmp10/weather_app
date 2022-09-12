@@ -1,4 +1,4 @@
-import { weatherDiv, cityDiv, locationInput } from "./dom";
+import { weatherDiv, cityDiv, locationInput, description } from "./dom";
 import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
 
     async function getLocation() {
@@ -11,6 +11,7 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
             const country = json[0].country;
             const city = json[0].name;
             return { latitude, longitude, city, country };
+
         } catch (error) {
             console.log(error);
     
@@ -25,25 +26,48 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
             const weather = await fetch ('https://api.openweathermap.org/data/2.5/weather?lat='+
             `${locationLatLon['latitude']}`+'&lon='+`${locationLatLon['longitude']}`+'&appid=899939d5ca4c4ea4b64de201ec8fde6f');
             const json = await weather.json();
-    
-            //this block could go in an another asynchronous function
-            const city = locationLatLon['city'];
-            if(locationLatLon['country'] !== ''){
-                const country = locationLatLon['country'];
-                cityDiv.textContent = `${city}`+`, ${country}`;
-            } else {
-                cityDiv.textContent = `${city}`;
-            }
-            const celsiusTemp = kelvinToCelsius(json.main.temp);
-            const fahrenheitTemp = kelvinToFahrenheit(json.main.temp);
-
-            weatherDiv.textContent = 'Temperature:'+` ${celsiusTemp} °C`;
-    
+            return json;
+        
         } catch (error) {
             console.log(error);
         }
     };
 
+    async function displayWeather () {
+        try {
+            const jsonWeather = await getWeather();
+            console.log(jsonWeather);
+            const celsiusTemp = kelvinToCelsius(jsonWeather.main.temp);
+    
+            weatherDiv.textContent = `${celsiusTemp} °C`;
+    
+            description.textContent = `${jsonWeather.weather[0].description.charAt(0).toUpperCase()}`
+            +`${jsonWeather.weather[0].description.slice(1)}`;
+
+        } catch(error) {
+            weatherDiv.textContent = "Error 404";
+            description.textContent = "Error 404";
+        }
 
 
-export { getLocation, getWeather }
+    };
+
+    async function displayCity() {
+        try {
+            const locationJson = await getLocation();
+            const city = locationJson['city'];
+    
+            if(locationJson['country'] !== ''){
+                const country = locationJson['country'];
+                cityDiv.textContent = `${city}`+`, ${country}`;
+            } else {
+                cityDiv.textContent = `${city}`;
+            }
+        } catch  (error) {
+            cityDiv.textContent = 'Error 404';
+        }
+
+    };
+
+
+export { getLocation, getWeather, displayCity, displayWeather}

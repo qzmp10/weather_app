@@ -1,15 +1,15 @@
 function kelvinToCelsius (temp) {
-    (temp - 273.15) = cTemp;
+    let cTemp = (temp - 273.15);
 
-    return cTemp;
-}
+    return Math.round(cTemp);
+};
 
 function kelvinToFahrenheit (temp) {
-    (temp - 273.15) = firstEquation;
-    (firstEquation * 1.8) = secondEquation;
-    (secondEquation + 32) = fTemp;
+    let firstEquation = (temp - 273.15);
+    let secondEquation = (firstEquation * 1.8);
+    let fTemp = (secondEquation + 32);
 
-    return fTemp;
-}
+    return Math.round(fTemp);
+};
 
 export { kelvinToCelsius, kelvinToFahrenheit }

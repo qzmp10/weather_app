@@ -1,10 +1,10 @@
-import { getWeather } from "./asyncFunctions";
+import { displayCity, displayWeather } from "./asyncFunctions";
 import { searchButton } from "./dom";
 
 searchButton.addEventListener('click', () => {
-    getWeather();
-})
-
+    displayCity();
+    displayWeather();
+});
 
 
 
