@@ -3,7 +3,7 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
 
     async function getLocation() {
         try {
-            const location = await fetch('http://api.openweathermap.org/geo/1.0/direct?q='+`${locationInput.value}`+'&limit=5&appid=899939d5ca4c4ea4b64de201ec8fde6f', 
+            const location = await fetch('https://api.openweathermap.org/geo/1.0/direct?q='+`${locationInput.value}`+'&limit=5&appid=899939d5ca4c4ea4b64de201ec8fde6f', 
             {mode: 'cors'})
             const json = await location.json();
             const latitude = json[0].lat;
