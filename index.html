@@ -6,17 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../src/style.css">
+    <script src="https://kit.fontawesome.com/0709ff3321.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="content">Weather App</div>
-    <div class="format">FORMAT IS: CITY OR CITY, STATE OR CITY, COUNTRY</div>
-    <div class="format-example">EXAMPLE: New York... New York, US</div>
-    <label for="search_location">Search Location:</label>
-    <input type="search" name="search_location" id="search_location">
-    <button class="search">Search!</button>
-    <div class="city-data"></div>
-    <div class="weather-data"></div>
-    <div class="description"></div>
+    <div class="content">
+        <h2> - The Weather Getter - </h2>
+        <div class="searchDiv">
+            <label for="search_location">Search Location</label>
+            <input type="search" name="search_location" id="search_location">
+            <div class="format-example">Format Examples: New York... New York, US... Toronto... Paris, FR...</div>
+        </div>
+        <div class="dataDiv">
+            <div class="city-data"> City, Country</div>
+            <div class="weather-data"> - °C / - ℉ </div>
+            <div class="description"> - </div>
+        </div>
+        <div class="iconDiv">
+            <i id="icon"></i>
+        </div>
+    </div>
 </body>
 <script src="main.js"></script>
 </html>
