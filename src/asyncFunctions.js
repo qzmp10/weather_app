@@ -1,4 +1,4 @@
-import { weatherDiv, cityDiv, locationInput, description } from "./dom";
+import { weatherDiv, cityDiv, locationInput, description, icon } from "./dom";
 import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
 
     async function getLocation() {
@@ -37,14 +37,39 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
         try {
             const jsonWeather = await getWeather();
             console.log(jsonWeather);
+
             const celsiusTemp = kelvinToCelsius(jsonWeather.main.temp);
-    
-            weatherDiv.textContent = `${celsiusTemp} °C`;
+            const fahrenheitTemp = kelvinToFahrenheit(jsonWeather.main.temp)
+            weatherDiv.textContent = `${celsiusTemp} °C `+`/ ${fahrenheitTemp} ℉`;
     
             description.textContent = `${jsonWeather.weather[0].description.charAt(0).toUpperCase()}`
             +`${jsonWeather.weather[0].description.slice(1)}`;
 
+            if(jsonWeather.weather[0].main === 'Clouds') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-cloud');
+            } else if (jsonWeather.weather[0].main === 'Clear') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-sun');
+            } else if (jsonWeather.weather[0].main === 'Rain') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-cloud-showers-heavy');
+            } else if (jsonWeather.weather[0].main === 'Drizzle') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-cloud-rain');
+            } else if (jsonWeather.weather[0].main === 'Snow') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-snowflake');
+            } else if (jsonWeather.weather[0].main === 'Thunderstorm') {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-cloud-bolt');
+            } else {
+                icon.classList.add('fa-solid');
+                icon.classList.add('fa-wind');
+            }
+
         } catch(error) {
+            console.log(error);
             weatherDiv.textContent = "Error 404";
             description.textContent = "Error 404";
         }
@@ -63,6 +88,8 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
             } else {
                 cityDiv.textContent = `${city}`;
             }
+
+
         } catch  (error) {
             cityDiv.textContent = 'Error 404';
         }
@@ -70,4 +97,5 @@ import { kelvinToCelsius, kelvinToFahrenheit } from "./convert";
     };
 
 
-export { getLocation, getWeather, displayCity, displayWeather}
+
+export { getLocation, getWeather, displayCity, displayWeather }

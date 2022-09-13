@@ -1,9 +1,13 @@
 import { displayCity, displayWeather } from "./asyncFunctions";
-import { searchButton } from "./dom";
+import { locationInput } from "./dom";
 
-searchButton.addEventListener('click', () => {
-    displayCity();
-    displayWeather();
+locationInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        icon.className = '';
+        displayCity();
+        displayWeather();
+        locationInput.value = '';
+    };
 });
 
 

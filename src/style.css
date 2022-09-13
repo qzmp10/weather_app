@@ -5,4 +5,75 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://img.le-dictionnaire.com/paysage-campagne.jpg');
+    color: white;
+    background-color: rgba(0, 0, 0, 0.363);
+    
 }
+
+.content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    gap: 3rem;
+    font-size: 1.3rem;
+}
+
+.searchDiv {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-shadow: black 0 0 10px;
+}
+
+input {
+    border: solid 2px black;
+}
+
+.format-example {
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+button {
+    width: 20%;
+    align-self: center;
+}
+
+.dataDiv {
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.651);
+    border-radius: 0.8rem;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+
+}
+
+h2 {
+    text-shadow: black 0 0 10px;
+    margin-bottom: -1rem;
+}
+
+#icon {
+
+}
+
+.fa-solid {
+    font-size: 12rem;
+    text-shadow: rgb(0, 0, 0) 0 0 30px;
+    color:rgb(255, 255, 255);
+    margin-top: 5vh;
+    transition: all 400ms ease-in-out
+}
+
