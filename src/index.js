@@ -1,5 +1,5 @@
 import { displayCity, displayWeather } from "./asyncFunctions";
-import { locationInput } from "./dom";
+import { locationInput, icon } from "./dom";
 
 locationInput.addEventListener('keypress', (e) => {
     if(e.key === 'Enter') {
